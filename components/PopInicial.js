@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import {useContext, useState} from "react";
 import {ContextoGlobal} from "../context/contexto";
+import imgUser from "../public/images/icons8_male_user_100px.png"
 
 
 
@@ -31,7 +32,7 @@ export default function PopInicial(props) {
             <div className={"w3-modal-content w3-card-4 w3-animate-zoom w3-round-large"} style={{maxWidth: "600px"}}>
                 <div className="w3-center"><br/>
                     <Image
-                        src="/./images/icons8_male_user_100px.png"
+                        src={imgUser}
                         width="100%"
                         height="100%"
 
