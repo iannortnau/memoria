@@ -4,7 +4,8 @@
     flex-wrap: wrap;
     align-items: center;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     padding: 25px;
 }
 .display{

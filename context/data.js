@@ -3,6 +3,7 @@ export const contextoGlobal = {
     points: 0,
     name: null,
     nivel: 0,
-    estado:1
+    estado:1,
+    momento:0,
 
 }
