@@ -28,7 +28,7 @@ export default function PopInicial(props) {
 
     return (
         <div className={"w3-modal"} style={{display: estado}}>
-            <div className={"w3-modal-content w3-card-4 w3-animate-zoom w3-round-large"} style={{maxWidth: "600px"}}>
+            <div className={"w3-modal-content w3-card-4 w3-animate-top w3-round-xxlarge"} style={{maxWidth: "600px"}}>
                 <div className="w3-center"><br/>
                     <Image
                         src={imgUser}
@@ -39,9 +39,9 @@ export default function PopInicial(props) {
                 </div>
 
                 <form className="w3-container">
-                    <div className="w3-section">
+                    <div className="w3-section w3-center w3-text-deep-purple">
                         <label><b>Jogador</b></label>
-                        <input className={"w3-input w3-border w3-margin-bottom"} type="text" placeholder="Ex: Iann" name="nome" required onChange={function (aux){setUser(aux.target.value);}}/>
+                        <input className={"w3-round-xxlarge w3-input w3-border w3-margin-bottom"} type="text" placeholder="Ex: Iann" name="nome" required onChange={function (aux){setUser(aux.target.value);}}/>
                         {(messenge != null)
                             ?
                                 <div className="w3-panel w3-pale-red">
@@ -50,7 +50,7 @@ export default function PopInicial(props) {
                             :
                                 <></>
                         }
-                        <button className="w3-button w3-block w3-deep-purple w3-section w3-padding" type="submit" onClick={registraNome}>
+                        <button className="w3-button w3-block w3-deep-purple w3-section w3-padding w3-round-xxlarge" type="submit" onClick={registraNome}>
                             Jogar
                         </button>
 
@@ -60,3 +60,8 @@ export default function PopInicial(props) {
         </div>
     );
 }
+
+
+
+
+

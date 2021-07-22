@@ -47,7 +47,8 @@ export default function Card(props) {
         case 0:
             return (
                 <div className={styles.item}>
-                    <div key={props.value.valor} className={"w3-card-4 w3-round-xxlarge animate__animated animate__flipInY "+styles.card} onClick={jogada}/>
+                    <div key={props.value.valor} className={"w3-card-4 w3-round-xxlarge animate__animated animate__flipInY "+styles.card} onClick={jogada}>
+                    </div>
                 </div>
             );
         case 1:

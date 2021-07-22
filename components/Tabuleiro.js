@@ -11,17 +11,35 @@ export default function Tabuleiro(props) {
     const [controlador,setControlador] = useState({
             cont: 0,
             cartaAnterior: null,
-            carta1: 0,
-            cartaAtual: 0,
             acertos: 0,
             estado: 0,
             mudaCarta: null,
             cartas: []
     });
-    console.log(controlador.acertos);
+    let numeros = [];
+    //console.log(controlador.acertos);
+
+
+    function numeroAleatorio(){
+        while (true){
+            const numero = Math.floor(Math.random() * 704);
+            let saida = 0;
+            for (let i = 0; i < numeros.length; i++) {
+                if(numero === numeros[i]){
+                    saida = 1;
+                    break;
+                }
+            }
+            if(saida === 0){
+                numeros.push(numero);
+                //console.log("a"+numero);
+                return(Number.parseInt(numero.toString()));
+            }
+        }
+    }
 
     if(controlador.acertos === contexto.state.nCartas){
-        setTimeout(function (){contexto.setState({...contexto.state, estado: 2})},1000);
+        setTimeout(function (){contexto.setState({...contexto.state, estado: 2})},1500);
     }
 
     useEffect(()=>{
@@ -32,10 +50,12 @@ export default function Tabuleiro(props) {
             let auxId = 0;
             let auxCartas = [];
             for (let i = 0; i < contexto.state.nCartas; i++) {
+                    const auxNumero = numeroAleatorio();
+                    console.log(auxNumero);
                     for (let j = 0; j < 2; j++) {
                             auxCartas.push({
                                     id: auxId,
-                                    valor: i,
+                                    valor: auxNumero,
                                     estado: 0,
                             });
                             auxId++;

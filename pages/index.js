@@ -17,7 +17,7 @@ export default function Home() {
 
     switch (contexto.state.estado) {
         case 0:
-            return (<></>);
+            return (<PopInicial/>);
         case 1:
             return(<Tabuleiro/>);
         case 2:

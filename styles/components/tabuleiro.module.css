@@ -20,7 +20,7 @@
 }
 
 .item{
-    flex: 22%;
+    flex: 5%;
     display: flex;
     justify-content: center;
     align-items: center;
