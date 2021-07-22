@@ -7,16 +7,22 @@ import NavBar from "../components/NavBar";
 import {ContextoGlobal} from "../context/contexto";
 import {useContext} from "react";
 import Tabuleiro from "../components/Tabuleiro";
+import Carregando from "../components/Carregando";
 
 
 
 export default function Home() {
     const contexto = useContext(ContextoGlobal);
 
-    return (
-        <div>
-            {(contexto.state.estado != 0)?<Tabuleiro/>:<></>}
 
-        </div>
-    )
+    switch (contexto.state.estado) {
+        case 0:
+            return (<></>);
+        case 1:
+            return(<Tabuleiro/>);
+        case 2:
+            setTimeout(function (){contexto.setState({...contexto.state, nCartas: contexto.state.nCartas+2, estado: 1})},2000);
+            return(<Carregando/>);
+
+    }
 }

@@ -10,7 +10,7 @@
 }
 .display{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
 }
@@ -18,8 +18,19 @@
     flex-basis: 100%;
     height: 0;
 }
+
+.item{
+    flex: 22%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 20px;
+}
+
 .card{
-    background-color: rgba(103, 58, 183, 0.45);
+    background-color: #a58ad5;
     display: flex;
     justify-content: center;
     align-items: center;

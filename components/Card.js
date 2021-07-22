@@ -46,18 +46,24 @@ export default function Card(props) {
     switch (estado) {
         case 0:
             return (
-                    <div key={props.value.valor} className={"w3-card-4 w3-round-xxlarge w3-margin animate__animated animate__flipInY "+styles.card} onClick={jogada}/>
+                <div className={styles.item}>
+                    <div key={props.value.valor} className={"w3-card-4 w3-round-xxlarge animate__animated animate__flipInY "+styles.card} onClick={jogada}/>
+                </div>
             );
         case 1:
             return (
-                <div className={"w3-round-xxlarge w3-margin animate__animated animate__flipInY "+styles.card} onClick={jogada}>
-                    <span className={"w3-text-deep-purple gg-"+listaDeIcones[props.value.valor]}/>
+                <div className={styles.item}>
+                    <div className={"w3-card-4 w3-round-xxlarge animate__animated animate__flipInY "+styles.card} onClick={jogada}>
+                        <span className={"w3-text-deep-purple gg-"+listaDeIcones[props.value.valor]}/>
+                    </div>
                 </div>
             );
         case 2:
             return (
-                <div className={"w3-round-xxlarge w3-margin animate__animated animate__bounce "+styles.card} onClick={jogada}>
-                    <span className={"w3-text-deep-purple gg-"+listaDeIcones[props.value.valor]}/>
+                <div className={styles.item}>
+                    <div className={"w3-card-4 w3-round-xxlarge animate__animated animate__bounce "+styles.card} onClick={jogada}>
+                        <span className={"w3-text-deep-purple gg-"+listaDeIcones[props.value.valor]}/>
+                    </div>
                 </div>
             );
 

@@ -9,7 +9,6 @@ import Card from "./Card";
 export default function Tabuleiro(props) {
     const contexto = useContext(ContextoGlobal);
     const [controlador,setControlador] = useState({
-            nCartas: 8,
             cont: 0,
             cartaAnterior: null,
             carta1: 0,
@@ -21,9 +20,8 @@ export default function Tabuleiro(props) {
     });
     console.log(controlador.acertos);
 
-    if(controlador.acertos == 6){
-        criaCartas();
-        setControlador({...controlador,acertos:0});
+    if(controlador.acertos === contexto.state.nCartas){
+        setTimeout(function (){contexto.setState({...contexto.state, estado: 2})},1000);
     }
 
     useEffect(()=>{
@@ -33,7 +31,7 @@ export default function Tabuleiro(props) {
     function criaCartas(){
             let auxId = 0;
             let auxCartas = [];
-            for (let i = 0; i < controlador.nCartas; i++) {
+            for (let i = 0; i < contexto.state.nCartas; i++) {
                     for (let j = 0; j < 2; j++) {
                             auxCartas.push({
                                     id: auxId,
@@ -83,33 +81,16 @@ export default function Tabuleiro(props) {
 
             <div className={styles.display}>
                 {controlador.cartas.map((value,index) =>{
-                    if(index<(controlador.cartas.length/2)){
-                        return(
-                            <Card
-                                key={index}
-                                value={value}
-                                mudaCarta={controlador.mudaCarta}
-                                cartaAnterior={controlador.cartaAnterior}
-                                controladorJogo={controladorJogo}
-                                cont={controlador.cont}
-                            />
-                        );
-                    }
-                })}
-                <QuebraDeLinha/>
-                {controlador.cartas.map((value,index) =>{
-                    if(index>=(controlador.cartas.length/2)){
-                        return(
-                            <Card
-                                key={index}
-                                value={value}
-                                mudaCarta={controlador.mudaCarta}
-                                cartaAnterior={controlador.cartaAnterior}
-                                controladorJogo={controladorJogo}
-                                cont={controlador.cont}
-                            />
-                        );
-                    }
+                    return(
+                        <Card
+                            key={index}
+                            value={value}
+                            mudaCarta={controlador.mudaCarta}
+                            cartaAnterior={controlador.cartaAnterior}
+                            controladorJogo={controladorJogo}
+                            cont={controlador.cont}
+                        />
+                    );
                 })}
             </div>
 

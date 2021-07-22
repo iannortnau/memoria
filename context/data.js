@@ -5,5 +5,6 @@ export const contextoGlobal = {
     nivel: 0,
     estado:1,
     momento:0,
+    nCartas: 4,
 
 }
