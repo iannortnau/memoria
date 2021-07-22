@@ -16,7 +16,6 @@ export default function PopInicial(props) {
         if(user != null){
             event.preventDefault();
             contexto.setState({...contexto.state, name:user, estado:1});
-            console.log(contexto.state);
             //TODO: criar usuario no banco
             setEstado("none");
         }else{

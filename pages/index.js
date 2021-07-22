@@ -15,9 +15,7 @@ export default function Home() {
 
     return (
         <div>
-            {(contexto.state.estado != 0)?<NavBar/>:<></>}
-            <PopInicial/>
-            <Tabuleiro/>
+            {(contexto.state.estado != 0)?<Tabuleiro/>:<></>}
 
         </div>
     )
