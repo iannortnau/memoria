@@ -51,7 +51,6 @@ export default function Tabuleiro(props) {
             let auxCartas = [];
             for (let i = 0; i < contexto.state.nCartas; i++) {
                     const auxNumero = numeroAleatorio();
-                    console.log(auxNumero);
                     for (let j = 0; j < 2; j++) {
                             auxCartas.push({
                                     id: auxId,

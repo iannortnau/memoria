@@ -11,6 +11,7 @@
   "dependencies": {
     "@prisma/client": "^2.27.0",
     "animate.css-react": "^1.1.0",
+    "axios": "^0.21.1",
     "fbjs": "^3.0.0",
     "next": "11.0.1",
     "next-auth": "^3.27.3",
