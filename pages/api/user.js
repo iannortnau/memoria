@@ -42,7 +42,7 @@ export default async function handle(req, res) {
                 email: session.user.email,
             },
         });
-        if ((req.body.nivel >= user.nivel || user.nivel == null) && (req.body.pontos < user.pontos || user.pontos == null)) {
+        if(req.body.nivel > user.nivel || user.nivel == null){
             const updateUser = await prisma.user.update({
                 where: {
                     email: session.user.email,
@@ -53,7 +53,22 @@ export default async function handle(req, res) {
                 },
             })
             return res.status(200).json(updateUser);
-        } else {
+        }else if(req.body.nivel === user.nivel){
+            if(req.body.pontos < user.pontos){
+                const updateUser = await prisma.user.update({
+                    where: {
+                        email: session.user.email,
+                    },
+                    data: {
+                        nivel: req.body.nivel,
+                        pontos: req.body.pontos,
+                    },
+                })
+                return res.status(200).json(updateUser);
+            }else {
+                return res.status(200).json("resultado anterior melhor");
+            }
+        }else {
             return res.status(200).json("resultado anterior melhor");
         }
     }
