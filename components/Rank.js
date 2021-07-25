@@ -41,7 +41,7 @@ export default function Rank(props) {
         );
     }else{
         return (
-            <div className="w3-sidebar w3-center w3-bar-block w3-collapse w3-card-4 w3-light-purple w3-text-deep-purple w3-round-xxlarge w3-large w3-animate-right" style={{width: "200px",right:0}} id="mySidebar">
+            <div className="w3-sidebar w3-center w3-bar-block w3-collapse w3-card-4 w3-light-purple w3-text-deep-purple w3-round-xxlarge w3-large w3-animate-right" style={{width: "300px",right:0}} id="mySidebar">
                 <span className={"w3-card w3-bar-item w3-ripple "+styles.botao} onClick={function (){setEstado(!estado);}}>Fechar <b>X</b></span>
                 <span className={"w3-bar-item w3-ripple "+styles.botao} onClick={function (){setEstado(!estado);}}><b>Rank</b></span>
                 <div style={{overflow: "auto"}}>
