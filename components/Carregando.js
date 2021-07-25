@@ -1,14 +1,10 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import {ContextoGlobal} from "../context/contexto";
 import {useContext, useEffect, useState} from "react";
 import styles from '../styles/components/tabuleiro.module.css'
-import QuebraDeLinha from "./QuebraDeLinha";
-import Card from "./Card";
 
 export default function Carregando(props) {
+
     return (
-        <div className={styles.tabuleiro}>
+        <div className={"w3-modal "+styles.tabuleiro} style={{display: (props.hide === true)?"none":"flex"}}>
 
             <div className={styles.display}>
                 <div className={"w3-card-4 w3-round-xxlarge w3-spin "+styles.card}>

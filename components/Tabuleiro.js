@@ -39,7 +39,7 @@ export default function Tabuleiro(props) {
     }
 
     if(controlador.acertos === contexto.state.nCartas){
-        setTimeout(function (){contexto.setState({...contexto.state, estado: 2})},1500);
+        setTimeout(function (){contexto.setState({...contexto.state, nivel: contexto.state.nivel+1, nCartas: contexto.state.nCartas+2})},1500);
     }
 
     useEffect(()=>{

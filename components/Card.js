@@ -13,20 +13,20 @@ export default function Card(props) {
     const contexto = useContext(ContextoGlobal);
     const listaDeIcones = Object.keys(icones);
 
-    if(props.mudaCarta == "erro" && estado == 1){
+    if(props.mudaCarta === "erro" && estado == 1){
         setEstado(0);
-    }else if(props.mudaCarta == "acerto" && estado == 1){
+    }else if(props.mudaCarta === "acerto" && estado == 1){
         setEstado(2);
     }
 
     function jogada(){
-        if(estado === 0 && contexto.state.momento != 1){
+        if(estado === 0 && contexto.state.momento !== 1){
             setEstado(1);
             if(props.cont === 0){
                 props.controladorJogo(1, props.value.valor);
             }else if(props.cont === 1){
                 contexto.setState({...contexto.state, momento:1});
-                if(props.value.valor == props.cartaAnterior){
+                if(props.value.valor === props.cartaAnterior){
                     setTimeout(function (){
                         props.controladorJogo(0, null, "acerto", true);
                         contexto.setState({...contexto.state, momento:0});

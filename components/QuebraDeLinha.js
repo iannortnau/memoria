@@ -7,6 +7,6 @@ import styles from '../styles/components/tabuleiro.module.css'
 export default function QuebraDeLinha(props) {
 
     return (
-        <div className={styles.break} value={"test"}></div>
+        <div className={styles.break}/>
     );
 }

@@ -1,59 +1,91 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import Card from "../components/Card";
-import Botao from "../components/Botao";
 import PopInicial from "../components/PopInicial";
-import NavBar from "../components/NavBar";
 import {ContextoGlobal} from "../context/contexto";
-import {useContext, useEffect} from "react";
+import {useContext, useEffect, useState} from "react";
 import Tabuleiro from "../components/Tabuleiro";
-import Carregando from "../components/Carregando";
+
 import { signIn, signOut, useSession } from 'next-auth/client';
-import ControleLogin from "../components/ControleLogin";
+import Carregando from "../components/Carregando";
+import axios from "axios";
+import NavBar from "../components/NavBar";
+import Rank from "../components/Rank";
 
 
 
 export default function Home() {
+    const [carregandoControle,setCarregandoControle] = useState(true);
+    const [popUpControle,setPopUpControle] = useState(false);
+    const [validaPerfil,setValidaPerfil] = useState(false);
     const [ session, loading ] = useSession();
     const contexto = useContext(ContextoGlobal);
-    //TODO: APRENDER A USAR O PRISMA https://www.prisma.io/nextjs
+    const [nivelAterior,setNivelAterior] = useState(contexto.state.nivel);
+    const [pegaTempo,setPegatempo] = useState(false);
 
     useEffect(function (){
-        if(contexto.state.estado !== 1){
-            if (session == null) {
-                if (contexto.state.estado !== 0) {
-                    contexto.setState({...contexto.state, estado: 0});
-                }
-            } else if (contexto.state.carregado === 0) {
-                if (contexto.state.estado !== 3) {
-                    contexto.setState({...contexto.state, estado: 3});
-                }
-            } else {
-                if (contexto.state.estado !== 2) {
-                    contexto.setState({...contexto.state, estado: 2});
-                }
-            }
+        if(nivelAterior !== contexto.state.nivel){
+            setPegatempo(true);
+            setNivelAterior(contexto.state.nivel);
         }
-    });
+    }, [contexto.state.nivel])
+    useEffect(function (){
+        getLogin();
+    },[]);
 
 
-    switch (contexto.state.estado) {
-        case 0:
-            return (<PopInicial/>);
-        case 1:
-            return(
-                <>
-                    <NavBar/>
-                    <Tabuleiro/>
-                </>
-            );
-        case 2:
-            setTimeout(function (){contexto.setState({...contexto.state, nCartas: contexto.state.nCartas+2, estado: 1})},2000);
-            return(<Carregando/>);
-        case 3:
-            return(<ControleLogin/>);
-        case 4:
-            return (<Carregando/>);
-
+    function registraTempo(tempo){
+        setPegatempo(false);
+        const nivel = nivelAterior-1;
+        console.log(tempo+" "+nivel);
+        axios.put(process.env.NEXT_PUBLIC_URL+"/api/user",
+            {
+                nivel:nivel,
+                pontos:tempo
+            }
+        )
+            .then(function (resp) {
+                console.log(resp.data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
+
+
+
+    function getLogin(){
+        axios.get(process.env.NEXT_PUBLIC_URL+"/api/user")
+            .then(function (resp) {
+                if(resp.data === false) {
+                    axios.post(process.env.NEXT_PUBLIC_URL + "/api/user")
+                        .then(function (resp) {
+                            console.log(resp);
+                            setCarregandoControle(true);
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                    console.log("user criado");
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    return(
+        <>
+            <Carregando
+                hide={carregandoControle}
+            />
+            <PopInicial
+                hide={popUpControle}
+            />
+            <NavBar
+                pegaTempo={pegaTempo}
+                registraTempo={registraTempo}
+            />
+            <Rank/>
+            <Tabuleiro key={"nivel"+contexto.state.nivel}/>
+
+        </>
+    );
 }
