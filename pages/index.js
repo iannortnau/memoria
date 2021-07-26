@@ -85,7 +85,6 @@ export default function Home() {
             />
             <Rank/>
             <Tabuleiro key={"nivel"+contexto.state.nivel}/>
-
         </>
     );
 }

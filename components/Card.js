@@ -1,10 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import imgRact from "../public/images/icons8_react_native_64px.png"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {useContext, useState} from "react";
 import icones from "../context/icons.json";
-import icones2 from "../context/icons2.json"
 import styles from "../styles/components/tabuleiro.module.css"
 import {ContextoGlobal} from "../context/contexto";
 
@@ -15,9 +13,9 @@ export default function Card(props) {
     const contexto = useContext(ContextoGlobal);
     const listaDeIcones = Object.keys(icones);
 
-    if(props.mudaCarta === "erro" && estado == 1){
+    if(props.mudaCarta === "erro" && estado === 1){
         setEstado(0);
-    }else if(props.mudaCarta === "acerto" && estado == 1){
+    }else if(props.mudaCarta === "acerto" && estado === 1){
         setEstado(2);
     }
 

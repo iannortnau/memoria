@@ -69,7 +69,7 @@ export default function PopInicial(props) {
                         </div>
                     </div>
                 }
-
+                <span className={"w3-text-deep-purple w3-large"}><b>Icons and thanks</b> css.gg</span>
 
             </div>
         </div>
