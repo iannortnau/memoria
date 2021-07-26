@@ -1,8 +1,10 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import imgRact from "../public/images/icons8_react_native_64px.png"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {useContext, useState} from "react";
 import icones from "../context/icons.json";
+import icones2 from "../context/icons2.json"
 import styles from "../styles/components/tabuleiro.module.css"
 import {ContextoGlobal} from "../context/contexto";
 
