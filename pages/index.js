@@ -8,6 +8,7 @@ import Carregando from "../components/Carregando";
 import axios from "axios";
 import NavBar from "../components/NavBar";
 import Rank from "../components/Rank";
+import {Head} from "next/document";
 
 
 
@@ -73,6 +74,10 @@ export default function Home() {
 
     return(
         <>
+            <Head>
+                <title>Memória Rank</title>
+                <meta name="google-site-verification" content="3s6cK3pFUhVi4YymrApFpzUGPffABAEUh9J9Y2gl7Io" />
+            </Head>
             <Carregando
                 hide={carregandoControle}
             />
