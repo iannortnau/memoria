@@ -8,7 +8,7 @@ import Carregando from "../components/Carregando";
 import axios from "axios";
 import NavBar from "../components/NavBar";
 import Rank from "../components/Rank";
-import {Head} from "next/document";
+import Head from 'next/head';
 
 
 
