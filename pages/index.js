@@ -76,7 +76,7 @@ export default function Home() {
         <>
             <Head>
                 <title>Memória Rank</title>
-                <meta name="google-site-verification" content="3s6cK3pFUhVi4YymrApFpzUGPffABAEUh9J9Y2gl7Io" />
+                <meta name="facebook-domain-verification" content="dqhwznb2r6dv75rngikqbycdjh8vor" />
             </Head>
             <Carregando
                 hide={carregandoControle}
